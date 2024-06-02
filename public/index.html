@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#062e3f">
+    <meta name="Description" content="A dynamic and aesthetic To-Do List WebApp.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
+
+    <link rel="shortcut icon" type="image/png" href="./favicon.png"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/corner.css">
+    <title>aesthene</title>
+
+</head>
+
+<body>
+  
+  <audio style="display: none;" autoplay loop>
+    <source src="../assets/bga.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+    <div id="header">
+        <div class="flexrow-container">
+            <div class="standard-theme theme-selector"></div>
+            <div class="light-theme theme-selector"></div>
+            <div class="darker-theme theme-selector"></div>
+        </div>
+        <h1 id="title" class="t">aesthene<div id="border"></div></h1>
+    </div>
+
+    <div id="form">
+        <form>
+            <input class="todo-input" type="text" placeholder="Add a prompt.">
+            <button class="todo-btn" type="submit">Generate!</button>
+        </form>
+    </div>
+
+    <div class="version">
+        <div class="demo version-section">
+            <a href="https://github.com/aksshatgovind" class="github-corner" target="_blank">
+                <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);">
+                    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+                    <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+                    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+                </svg>
+            </a>
+        </div>
+        <div>
+            <p id="datetime"></p>
+            <script src="../src/time.js"></script>
+        </div>
+        <div id="myUnOrdList">
+            <ul class="todo-list">
+            </ul>
+        </div>
+
+        <h2 class="t" style="margin-left: 24px;">AI Art Generator</h2>
+        <section id="ai-art-generator" class="artworks-container">
+        
+          <article class="card">
+            <img
+              class="card__background"
+              src="https://img.lovepik.com/bg/20231206/white-dog-is-standing-in-front-of-pink-clouds_2450000_wh1200.png"
+              alt="White Dog"
+              width="1920"
+              height="2193"
+
+             />
+          </article>
+          <article class="card">
+            <img
+              class="card__background"
+              src="https://static.vecteezy.com/system/resources/thumbnails/040/970/412/small_2x/ai-generated-historical-celestial-event-rare-planetary-transit-across-the-sun-captured-in-stunning-detail-highlighting-astronomical-precision-photo.jpg"
+              alt="Black Sun"
+              width="1920"
+              height="2193"
+
+             />
+          </article>
+          <article class="card">
+            <img
+              class="card__background"
+              src="https://img.freepik.com/premium-photo/berry-juice-background-illustration-ai-generativexa_115919-12243.jpg"
+              alt="Pink Cola"
+              width="1920"
+              height="2193"
+
+             />
+          </article>
+
+      </section>
+
+
+      <section id="ai-art-showcase">
+        <h1 class="t" style="margin-left: 24px;">Art Showcase</h1>
+        <div class="artworks-container">
+
+          <article class="card">
+            <img
+              class="card__background"
+              src="https://cdnb.artstation.com/p/assets/images/images/052/268/151/large/krzysztof-maziarz-room-final.jpg?1659378718"
+              alt="Baseroom"
+              width="1920"
+              height="2193"
+            />
+            <div class="card__content | flow">
+              <div class="card__content--container | flow">
+                <h2 class="card__title">Baseroom</h2>
+                <p class="card__description">
+                  First time using AI (Dall-E) as a base for an illustration. I can see the correct and legitimate appropriation of AI in art.
+                </p>
+              </div>
+              <button class="card__button">By Krzysztof Maziarz</button>
+            </div>
+          </article>
+
+
+
+          <article class="card">
+            <img
+              class="card__background"
+              src="https://cdna.artstation.com/p/assets/images/images/050/257/950/large/thu-berchs-moon-1.jpg?1654444882"
+              alt="Moons"
+              width="1920"
+              height="2193"
+            />
+            <div class="card__content | flow">
+              <div class="card__content--container | flow">
+                <h2 class="card__title">Moons</h2>
+                <p class="card__description">
+                  Exploring the unknown. Made with Midjourney AI + Photoshop. I wanted to show which parts were the AI and how much I built on top!
+                </p>
+              </div>
+              <button class="card__button">By Thu Berchs</button>
+            </div>
+          </article>
+
+
+          <article class="card">
+            <img
+              class="card__background"
+              src="https://cdna.artstation.com/p/assets/images/images/059/800/098/large/ismail-inceoglu-call-it-a-day.jpg?1677166079"
+              alt="Call it a Day"
+              width="1920"
+              height="2193"
+            />
+            <div class="card__content | flow">
+              <div class="card__content--container | flow">
+                <h2 class="card__title">Call it a Day</h2>
+                <p class="card__description">
+                  Made with Generative Fill. The one guy visible in one of the panels is creeping me out for some reason, but the sunset is really pretty tho.
+                </p>
+              </div>
+              <button class="card__button">By Ismail Inceoglu</button>
+            </div>
+          </article>
+        </div>
+
+
+        <div class="artworks-container">
+          <article class="card">
+            <img
+              class="card__background"
+              src="https://cdnb.artstation.com/p/assets/images/images/049/832/175/large/andrian-luchian-4th.jpg?1653421745"
+              alt="Forbidden Sailing"
+              width="1920"
+              height="2193"
+            />
+            <div class="card__content | flow">
+              <div class="card__content--container | flow">
+                <h2 class="card__title">Forbidden Sailing</h2>
+                <p class="card__description">
+                  I started experimenting with Midjorney and it's like no other AI that I tried so far this one feels like a revolution. 
+                </p>
+              </div>
+              <button class="card__button">By Andrian Luchian</button>
+            </div>
+          </article>
+
+
+
+          <article class="card">
+            <img
+              class="card__background"
+              src="https://cdna.artstation.com/p/assets/images/images/064/467/010/large/marcin-rubinkowski-scifi-city-explorations-rubinkowski-13.jpg?1687983222"
+              alt="Scifi City"
+              width="1920"
+              height="2193"
+            />
+            <div class="card__content | flow">
+              <div class="card__content--container | flow">
+                <h2 class="card__title">Sci-Fi City</h2>
+                <p class="card__description">
+                  Environment Concept Art explorations done by me. I made it as mix between 3D, 2D and AI layers.
+                </p>
+              </div>
+              <button class="card__button">By Marcin Rubinkowski</button>
+            </div>
+          </article>
+
+
+          <article class="card">
+            <img
+              class="card__background"
+              src="https://cdnb.artstation.com/p/assets/images/images/021/892/165/large/russell-dongjun-lu-character-vote-archer-render-finish-dongjun-small.jpg?1573334353"
+              alt="Symbiosis"
+              width="1920"
+              height="2193"
+            />
+            <div class="card__content | flow">
+              <div class="card__content--container | flow">
+                <h2 class="card__title">Symbiosis</h2>
+                <p class="card__description">
+                  Made with Photoshop AI. Character huntress with HD definitive features. AI Masking done by me.
+                </p>
+              </div>
+              <button class="card__button">By Eric Basiletti</button>
+            </div>
+          </article>
+        </div>
+    </section>
+
+    <h2 class="t" style="margin-left: 24px;">AR Gallery</h2>
+        <section id="ar-gallery">
+            <div class="container">
+                <iframe class="i" src="../ar_gallery/ar1.html" alt="Forest Grid"></iframe>
+                <iframe class="i" src="../ar_gallery/ar2.html" alt="Video AR" frameborder="0"></iframe>
+                <iframe class="i" src="../ar_gallery/ar3.html" alt="Pointy Dog"></iframe>
+            </div>
+        </section>
+
+
+    </div>
+
+    <script src="../src/main.js" type="text/javascript"></script>
+
+
+
+    <footer style="width: 100%;">
+      <div class="footer">
+      <div class="row">
+      <a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a>
+      <a href="https://www.instagram.com"><i class="fa fa-instagram"></i></a>
+      <a href="https://www.youtube.com"><i class="fa fa-youtube"></i></a>
+      <a href="https://x.com/?lang=en"><i class="fa fa-twitter"></i></a>
+      </div>
+      
+      <!-- <div class="row">
+      <ul>
+      <li><a href="#">Contact us</a></li>
+      <li><a href="#">Terms & Conditions</a></li>
+      </ul>
+      </div> -->
+      
+      <div class="row">
+        aesthene Copyright © 2024 - All rights reserved | Aksshat Govind
+      </div>
+      </div>
+      </footer>
+
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trees</title>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            var frame = document.getElementById('embeddedFrame');
+            var doc = frame.contentDocument || iframe.contentWindow.document;
+            var elementToRemove = doc.querySelector('.source-fab');
+            if (elementToRemove) {
+                elementToRemove.parentNode.removeChild(elementToRemove);
+            }
+        });
+    </script>
+</head>
+<frameset>
+    <frame id="embeddedFrame" src="https://marcofugaro.github.io/three-projected-material/multiple-projections-instancing.html"></frame>
+</frameset>
+<body>    
+</body>
+</html> 
+
+
+
