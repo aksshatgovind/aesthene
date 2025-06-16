@@ -38,10 +38,10 @@
     </div>
 
     <div id="form">
-        <form>
-            <input class="todo-input" type="text" placeholder="Add a prompt.">
-            <button class="todo-btn" type="submit">Generate!</button>
-        </form>
+      <form>
+        <input id="prompt-input" class="todo-input" type="text" placeholder="Add a prompt.">
+        <button class="todo-btn" type="submit">Generate!</button>
+      </form>
     </div>
 
     <div class="version">
@@ -64,40 +64,34 @@
         </div>
 
         <h2 class="t" style="margin-left: 24px;">AI Art Generator</h2>
+
         <section id="ai-art-generator" class="artworks-container">
-        
           <article class="card">
-            <img
-              class="card__background"
-              src="https://img.lovepik.com/bg/20231206/white-dog-is-standing-in-front-of-pink-clouds_2450000_wh1200.png"
-              alt="White Dog"
-              width="1920"
-              height="2193"
-
-             />
+            <img id="img1" class="card__background" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjhucGkzdmlnbGloN2xwb2w1dGtia2Q5dGc1NnB1OXhiM2cwcmprayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MWtygglAN89h0jYgVd/giphy.gif" alt="Image 1" />
+            <button id="download1" class="download-btn" disabled title="Download image">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M5 20h14v-2H5v2zm7-18l-5.5 5.5h4v6h3v-6h4L12 2z"/>
+              </svg>
+            </button>
           </article>
           <article class="card">
-            <img
-              class="card__background"
-              src="https://static.vecteezy.com/system/resources/thumbnails/040/970/412/small_2x/ai-generated-historical-celestial-event-rare-planetary-transit-across-the-sun-captured-in-stunning-detail-highlighting-astronomical-precision-photo.jpg"
-              alt="Black Sun"
-              width="1920"
-              height="2193"
-
-             />
+            <img id="img2" class="card__background" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWd2aTF3dzdmN2cyNzB4MjBkbWc0cmc3cmY2bmFkYmFkZ25nczQwdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11SoRpqBK3dIKOzF1G/giphy.gif" alt="Image 2" />
+            <button id="download2" class="download-btn" disabled title="Download image">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M5 20h14v-2H5v2zm7-18l-5.5 5.5h4v6h3v-6h4L12 2z"/>
+              </svg>
+            </button>
           </article>
           <article class="card">
-            <img
-              class="card__background"
-              src="https://img.freepik.com/premium-photo/berry-juice-background-illustration-ai-generativexa_115919-12243.jpg"
-              alt="Pink Cola"
-              width="1920"
-              height="2193"
-
-             />
+            <img id="img3" class="card__background" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3FiMWxlYnQ3dDF1MTg5c205MHc3Mmg1NDFjMnAxODdzeWRmdGdqMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5zdo7zjTgrCHGjAmQz/giphy.gif" alt="Image 3" />
+            <button id="download3" class="download-btn" disabled title="Download image">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M5 20h14v-2H5v2zm7-18l-5.5 5.5h4v6h3v-6h4L12 2z"/>
+              </svg>
+            </button>
           </article>
+        </section>
 
-      </section>
 
 
       <section id="ai-art-showcase">
@@ -241,9 +235,7 @@
 
     </div>
 
-    <script src="../src/main.js" type="text/javascript"></script>
-
-
+    <!-- <script src="../src/main.js" type="text/javascript"></script> -->
 
     <footer style="width: 100%;">
       <div class="footer">
@@ -262,11 +254,142 @@
       </div> -->
       
       <div class="row">
-        aesthene Copyright © 2024 - All rights reserved | Aksshat Govind
+        aesthene Copyright © 2025 - All rights reserved | Aksshat Govind
       </div>
       </div>
       </footer>
 
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          // Theme buttons
+          const standardTheme = document.querySelector('.standard-theme');
+          const lightTheme = document.querySelector('.light-theme');
+          const darkerTheme = document.querySelector('.darker-theme');
+        
+          standardTheme?.addEventListener('click', () => changeTheme('standard'));
+          lightTheme?.addEventListener('click', () => changeTheme('light'));
+          darkerTheme?.addEventListener('click', () => changeTheme('darker'));
+        
+          // Apply saved or default theme
+          let savedTheme = localStorage.getItem('savedTheme');
+          savedTheme === null ? changeTheme('standard') : changeTheme(savedTheme);
+        
+          // Handle image prompt form
+          const form = document.querySelector("#form form");
+          form?.addEventListener("submit", async (e) => {
+          e.preventDefault();
+  
+          // const promptInput = document.querySelector(".todo-input");
+          // if (!promptInput) {
+          //   console.error("'.todo-input' not found.");
+          //   return;
+          // }
+  
+          // const prompt = promptInput.value.trim();
+          const prompt = document.getElementById("prompt-input").value.trim();
+          if (!prompt) {
+            console.warn("Prompt is empty.");
+            return;
+          }
+  
+          console.log("Prompt submitted:", prompt);
+  
+          const cardWidth = 350;
+          const cardHeight = 450;
+          const watermarkHeight = 70;
+          const imageIDs = ["img1", "img2", "img3"];
+          const downloadIDs = ["download1", "download2", "download3"];
+  
+          imageIDs.forEach(id => {
+            const img = document.getElementById(id);
+            if (img) {
+              img.src = "";
+              img.alt = "Generating...";
+            }
+          });
+  
+          for (let i = 0; i < 3; i++) {
+            try {
+              const uniquePrompt = encodeURIComponent(`${prompt} ${Date.now()}-${i}`);
+              const url = `https://image.pollinations.ai/prompt/${uniquePrompt}`;
+              console.log(`Fetching image from: ${url}`);
+  
+              const response = await fetch(url);
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+  
+              const blob = await response.blob();
+  
+              const img = new Image();
+              img.src = URL.createObjectURL(blob);
+              await img.decode();
+  
+              const canvas = document.createElement("canvas");
+              canvas.width = cardWidth;
+              canvas.height = cardHeight - watermarkHeight;
+              const ctx = canvas.getContext("2d");
+              ctx.drawImage(
+                img,
+                0, 0, img.width, img.height - watermarkHeight, // source area
+                0, 0, cardWidth, cardHeight                   // destination area
+              );
+  
+              const cropped = canvas.toDataURL();
+              document.getElementById(imageIDs[i]).src = cropped;
+              document.getElementById(imageIDs[i]).alt = `Generated Image ${i + 1}`;
+
+              // Enable and set download button
+              const downloadBtn = document.getElementById(downloadIDs[i]);
+              downloadBtn.disabled = false;
+              downloadBtn.onclick = () => {
+                const link = document.createElement('a');
+                link.href = cropped;
+                link.download = `ai_image_${i + 1}.png`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              };
+            } catch (error) {
+              console.error(`Image ${i + 1} error:`, error);
+              document.getElementById(imageIDs[i]).alt = "Failed to load";
+            }
+          }
+        });
+        
+          function changeTheme(color) {
+            localStorage.setItem('savedTheme', color);
+            savedTheme = color;
+        
+            document.body.className = color;
+            const title = document.getElementById('title');
+            if (title) {
+              color === 'darker'
+                ? title.classList.add('darker-title')
+                : title.classList.remove('darker-title');
+            }
+        
+            const input = document.querySelector('input');
+            if (input) input.className = `${color}-input`;
+        
+            document.querySelectorAll('.todo').forEach(todo => {
+              todo.className = todo.classList.contains('completed')
+                ? `todo ${color}-todo completed`
+                : `todo ${color}-todo`;
+            });
+        
+            document.querySelectorAll('button').forEach(button => {
+              if (button.classList.contains('check-btn')) {
+                button.className = `check-btn ${color}-button`;
+              } else if (button.classList.contains('delete-btn')) {
+                button.className = `delete-btn ${color}-button`;
+              } else if (button.classList.contains('todo-btn')) {
+                button.className = `todo-btn ${color}-button`;
+              }
+            });
+          }
+        });
+        </script>
     
 </body>
 </html>

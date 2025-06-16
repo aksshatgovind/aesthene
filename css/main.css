@@ -575,7 +575,7 @@ form button {
   
   #ar-gallery{
     width: 100%;
-  height: 100vh;
+  height: 110vh;
   display:grid;
   place-items:center;
   margin: 0;
@@ -610,3 +610,31 @@ form button {
     transform:perspective(800px)       rotateY(0deg);
     opacity:1;
   }
+  
+  .download-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Show button on hover */
+  .card:hover .download-btn {
+    opacity: 1;
+  }
+  
+  /* Hide button if disabled */
+  .download-btn:disabled {
+    opacity: 0 !important;
+    cursor: not-allowed;
+  }
+  
